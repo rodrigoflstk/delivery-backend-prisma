@@ -1,4 +1,4 @@
-import { hash } from "bcrypt";
+import * as bcrypt from "bcrypt";
 import { prisma } from "../../../../database/PrismaClient";
 
 prisma;
@@ -22,7 +22,8 @@ class CreateClientUseCase {
       throw new Error("Client already exists");
     }
 
-    const hashedPassword = await hash(password, 10);
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const client = await prisma.client.create({
       data: {
