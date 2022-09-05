@@ -1,0 +1,13 @@
+version: "3.9"
+
+services: 
+  database:
+    image: postgres
+    container_name: delivery-backend
+    restart: always
+    ports:
+      - 5432:5432
+    environment: 
+      - POSTGRES_USER=deliverypg
+      - POSTGRES_PASSWORD=deliverypg
+      - POSTGRES_DB=delivery_db
