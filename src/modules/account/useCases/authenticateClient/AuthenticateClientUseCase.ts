@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt";
 import { sign } from "jsonwebtoken";
-import { prisma } from "../../../database/PrismaClient";
+import { prisma } from "../../../../database/PrismaClient";
 
 interface IAuthenticateClient {
   username: string;
