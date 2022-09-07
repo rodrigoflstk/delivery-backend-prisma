@@ -10,11 +10,9 @@ interface ICreateClient {
 
 class CreateClientUseCase {
   async execute({ password, username }: ICreateClient) {
-    const clientExists = await prisma.client.findFirst({
+    const clientExists = await prisma.client.findUnique({
       where: {
-        username: {
-          mode: "insensitive",
-        },
+        username: username,
       },
     });
 
