@@ -18,7 +18,6 @@ model Deliveryman {
 
   @@map("deliveryman")
 }
-
 model Client {
   id         String       @id @default(uuid())
   username   String       @unique
@@ -29,14 +28,14 @@ model Client {
 }
 
 model Deliveries {
-  id          String      @id @default(uuid())
-  item_name   String
-  client      Client      @relation(fields: [client_id], references: [id])
-  client_id   String
-  deliveryman Deliveryman @relation(fields: [delivery_id], references: [id])
-  delivery_id String
-  created_at  DateTime    @default(now())
-  end_at      DateTime    @default(now())
+  id             String       @id @default(uuid())
+  item_name      String
+  client         Client       @relation(fields: [client_id], references: [id])
+  client_id      String
+  deliveryman    Deliveryman? @relation(fields: [deliveryman_id], references: [id])
+  deliveryman_id String?
+  created_at     DateTime     @default(now())
+  end_at         DateTime?
 
   @@map("deliveries")
 }
