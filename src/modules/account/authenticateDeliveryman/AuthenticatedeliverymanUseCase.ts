@@ -28,7 +28,7 @@ class AuthenticateDeliverymanUseCase {
       throw new Error("Invalid credentials!!");
     }
 
-    const token = sign({ username }, "c4e70ca5e4aef7ce6dcb22e2dab50966", {
+    const token = sign({ username }, "c4e70ca5e4aef7ce6dcb22e2dab50977", {
       subject: deliveryman.id,
       expiresIn: "1d",
     });

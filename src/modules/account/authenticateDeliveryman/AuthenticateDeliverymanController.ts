@@ -3,7 +3,7 @@ import { AuthenticateDeliverymanUseCase } from "./AuthenticatedeliverymanUseCase
 
 class AuthenticateDeliverymanController {
   async handle(request: Request, response: Response) {
-    const { username, password } = request.body();
+    const { username, password } = request.body;
 
     const authenticateDeliverymanUseCase = new AuthenticateDeliverymanUseCase();
 

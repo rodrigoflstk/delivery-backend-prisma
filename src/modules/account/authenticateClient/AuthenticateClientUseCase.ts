@@ -28,7 +28,7 @@ class AuthenticateClientUseCase {
       throw new Error("Invalid credentials!!");
     }
 
-    const token = sign({ username }, "c4e70ca5e4aef7ce6dcb11e2dab50966", {
+    const token = sign({ username }, "c4e70ca5e4aef7ce6dcb11e2dab50955", {
       subject: client.id,
       expiresIn: "1d",
     });

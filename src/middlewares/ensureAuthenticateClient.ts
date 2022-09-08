@@ -5,13 +5,13 @@ interface IPayload {
   sub: string;
 }
 
-const middlewareToValidateJwt = (
+const middlewareToValidateClient = (
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
   const token = request.headers.authorization;
-  const secretKey = "c4e70ca5e4aef7ce6dcb11e2dab50966";
+  const secretKey = "c4e70ca5e4aef7ce6dcb11e2dab50955";
 
   if (!token) {
     return response.status(401).json({
@@ -34,4 +34,4 @@ const middlewareToValidateJwt = (
   }
 };
 
-export { middlewareToValidateJwt };
+export { middlewareToValidateClient };
