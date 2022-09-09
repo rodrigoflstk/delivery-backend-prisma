@@ -1,5 +1,5 @@
-import { prisma } from "../../../database/PrismaClient";
 import * as bcrypt from "bcrypt";
+import { prisma } from "../../../../database/PrismaClient";
 
 interface ICreateDeliveryman {
   username: string;
@@ -8,9 +8,12 @@ interface ICreateDeliveryman {
 
 class CreateDeliverymanUseCase {
   async execute({ password, username }: ICreateDeliveryman) {
-    const deliverymanExists = await prisma.deliveryman.findUnique({
+    const deliverymanExists = await prisma.deliveryman.findFirst({
       where: {
-        username: username,
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
       },
     });
 
