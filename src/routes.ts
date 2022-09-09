@@ -9,6 +9,7 @@ import { FindAllDeliveriesController } from "./modules/client/useCases/delivery/
 import { AddDeliverymanController } from "./modules/deliveries/useCases/addDeliveryman/AddDeliverymanController";
 import { CreateDeliveryController } from "./modules/deliveries/useCases/createDelivery/CreateDeliveryController";
 import { FindOpenedDeliveryController } from "./modules/deliveries/useCases/findOpenedDelivery/FindOpenedDeliveryController";
+import { UpdateEndDateController } from "./modules/deliveries/useCases/updateEndDate/UpdateEndDateController";
 import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 import { FindAllDeliverymanDeliveriesController } from "./modules/deliveryman/useCases/delivery/FindAllDeliveriesController";
 
@@ -23,6 +24,7 @@ const findAllDeliverymanDeliveriesController =
 
 const createDeliveryController = new CreateDeliveryController();
 const findOpenedDeliveryController = new FindOpenedDeliveryController();
+const updateEndDateController = new UpdateEndDateController();
 
 const createClientController = new CreateClientController();
 const authenticateClientController = new AuthenticateClientController();
@@ -58,6 +60,11 @@ routes.put(
   "/delivery/addDeliveryman/:id",
   middlewareToValidateDeliveryman,
   addDeliverymanController.handle
+);
+routes.put(
+  "/delivery/updateEndDate/:id",
+  middlewareToValidateDeliveryman,
+  updateEndDateController.handle
 );
 
 export { routes };
