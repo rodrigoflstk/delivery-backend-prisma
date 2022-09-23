@@ -4,10 +4,12 @@ import { prisma } from "../../../../database/PrismaClient";
 interface ICreateDeliveryman {
   username: string;
   password: string;
+  email: string;
+  phone: string;
 }
 
 class CreateDeliverymanUseCase {
-  async execute({ password, username }: ICreateDeliveryman) {
+  async execute({ password, username, email, phone }: ICreateDeliveryman) {
     const deliverymanExists = await prisma.deliveryman.findFirst({
       where: {
         username: {
@@ -27,7 +29,9 @@ class CreateDeliverymanUseCase {
     const deliveryman = await prisma.deliveryman.create({
       data: {
         username,
+        email,
         password: hashedPassword,
+        phone,
       },
     });
 
