@@ -1,15 +1,15 @@
 import * as bcrypt from "bcrypt";
 import { prisma } from "../../../../database/PrismaClient";
 
-prisma;
-
 interface ICreateClient {
   username: string;
   password: string;
+  phone: string;
+  email: string;
 }
 
 class CreateClientUseCase {
-  async execute({ password, username }: ICreateClient) {
+  async execute({ password, username, phone, email }: ICreateClient) {
     const clientExists = await prisma.client.findFirst({
       where: {
         username: {
@@ -29,7 +29,9 @@ class CreateClientUseCase {
     const client = await prisma.client.create({
       data: {
         username,
+        email,
         password: hashedPassword,
+        phone,
       },
     });
 

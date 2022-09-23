@@ -9,6 +9,8 @@ class FindAllDeliveriesUseCase {
       select: {
         id: true,
         username: true,
+        email: true,
+        phone: true,
         Deliveries: true,
       },
     });
