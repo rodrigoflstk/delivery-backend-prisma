@@ -2,7 +2,9 @@
 CREATE TABLE "deliveryman" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
 
     CONSTRAINT "deliveryman_pkey" PRIMARY KEY ("id")
 );
@@ -11,7 +13,9 @@ CREATE TABLE "deliveryman" (
 CREATE TABLE "client" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
 
     CONSTRAINT "client_pkey" PRIMARY KEY ("id")
 );
@@ -20,8 +24,11 @@ CREATE TABLE "client" (
 CREATE TABLE "deliveries" (
     "id" TEXT NOT NULL,
     "item_name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "client_id" TEXT NOT NULL,
     "deliveryman_id" TEXT,
+    "pickup_address" TEXT NOT NULL,
+    "delivery_address" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "end_at" TIMESTAMP(3),
 
